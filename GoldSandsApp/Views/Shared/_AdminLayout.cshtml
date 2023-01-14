@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GoldSandsApp</title>
+    <environment>
+        <!-- Fontfaces CSS-->
+        <link href="~/Assets/css/font-face.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" />
+
+        <!-- Bootstrap CSS-->
+        <link href="~/Assets/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
+        @*<link rel="stylesheet" href="~/css/site.css" />*@
+
+        <!-- Vendor CSS-->
+        <link href="~/Assets/vendor/animsition/animsition.min.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/wow/animate.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/css-hamburgers/hamburgers.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/slick/slick.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/select2/select2.min.css" rel="stylesheet" />
+        <link href="~/Assets/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" />
+
+        <!-- Main CSS-->
+        <link href="~/Assets/css/theme.css" rel="stylesheet" />
+
+    </environment>
+    @*@RenderSection("styles", required: false)*@
+</head>
+<body class="animsition">
+
+    <div class="page-wrapper">
+
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <img src="~/Assets/images/icon/goldsands logo.png" alt="GoldSands" />
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a asp-action="Index" asp-controller="Admin">
+                                <i class="fa fa-home"></i>Home
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Create" asp-controller="Leads">
+                                <i class="fa fa-tags"></i>Add Occupation
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Create" asp-controller="Leads">
+                                <i class="fas fa-plus-circle"></i>Add Leads
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Upload" asp-controller="BulkLeads">
+                                <i class="fas fa-upload"></i>Upload Leads
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- END HEADER MOBILE-->
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <a href="#">
+                    <img src="~/Assets/images/icon/goldsands logo.png" alt="GoldSands" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a asp-action="Index" asp-controller="Admin">
+                                <i class="fa fa-home"></i>Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a asp-action="Create" asp-controller="Leads">
+                                <i class="fa fa-tags"></i>Add Occupation
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Create" asp-controller="Leads">
+                                <i class="fas fa-plus-circle"></i> Add Leads
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="Upload" asp-controller="BulkLeads">
+                                <i class="fas fa-upload"></i>Upload Leads
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <div class="container-fluid">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+    </div>
+
+    <environment>
+
+        <!-- Jquery JS-->
+        <script src="~/Assets/vendor/jquery-3.2.1.min.js"></script>
+
+        <!-- Jquery JS-->
+        <script src="~/Assets/vendor/bootstrap-4.1/popper.min.js"></script>
+        <script src="~/Assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+
+        <!-- Vendor JS-->
+        <script src="~/Assets/vendor/slick/slick.min.js"></script>
+
+        <script src="~/Assets/vendor/wow/wow.min.js"></script>
+
+        <script src="~/Assets/vendor/animsition/animsition.min.js"></script>
+
+        <script src="~/Assets/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+
+        <script src="~/Assets/vendor/counter-up/jquery.waypoints.min.js"></script>
+        <script src="~/Assets/vendor/counter-up/jquery.counterup.min.js"></script>
+
+        <script src="~/Assets/vendor/circle-progress/circle-progress.min.js"></script>
+
+        <script src="~/Assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+        <script src="~/Assets/vendor/chartjs/Chart.bundle.min.js"></script>
+        <script src="~/Assets/vendor/select2/select2.min.js"></script>
+
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+
+        <!-- Main JS-->
+        <script src="~/Assets/js/main.js"></script>
+
+    </environment>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

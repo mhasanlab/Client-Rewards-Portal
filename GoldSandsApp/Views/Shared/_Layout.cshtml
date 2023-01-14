@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GoldSandsApp</title>
+    <environment>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </environment>
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="SignUp">SignUp</a>
+                        </li>
+                    </ul>
+                    @*@if (User.Identity.IsAuthenticated)
+                    {
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item btn btn-outline-info">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">Admin Panel</a>
+                    </li> &nbsp;&nbsp;
+
+                    <li class="nav-item btn btn-outline-info">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="ClientPanel" asp-action="Index">Client Panel</a>
+                    </li>&nbsp;&nbsp;
+
+
+                    <li class="nav-item btn btn-outline-info">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Leads" asp-action="Create">Add Leads</a>
+                    </li>&nbsp;&nbsp;
+                    <li class="nav-item btn btn-outline-info">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="BulkLeads" asp-action="BulkUpload">Upload Leads</a>
+                    </li>
+                </ul>
+                        <ul class="navbar-nav float-right">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">Welcome :<span class="text-primary text-dark"> @User.Identity.Name</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-md btn-outline-warning" asp-action="SignOut" asp-controller="Account">SignOut</a>
+                            </li>
+                        </ul>}*@
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - GoldSandsApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <environment>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+﻿@model GoldSandsApp.Models.ViewModel.LeadsVM
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-container">
+
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="header-wrap">
+                    <form class="form-header" action="" method="POST">
+                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                        <button class="au-btn--submit" type="submit">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                    </form>
+                    <div class="header-button">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="~/Assets/images/icon/user.png" alt="Wellcome: " />
+                                    </div>
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">@User.Identity.Name</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="~/Assets/images/icon/user.png" alt="Wellcome: " />
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="text">
+                                                    <a href="#">@User.Identity.Name</a>
+                                                </h5>
+                                                <span class="email">@User.Identity.Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="account-dropdown__footer">
+                                            <a asp-action="SignOut" asp-controller="Account">
+                                                <i class="zmdi zmdi-power"></i>Logout
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER DESKTOP-->
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <div id="panel"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Update Leads Status</strong>
+                                </div>
+                                <div class="col-md-6 d-flex justify-content-end">
+                                    <a class="btn btn-danger btn-sm" asp-action="Index" asp-controller="Admin">
+                                        <i class="fa fa-times-circle"></i> Close
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card-body card-block">
+                            <form id="frmCreate"
+                                  asp-action="Update"
+                                  asp-controller="Leads"
+                                  data-ajax-method="Post"
+                                  data-ajax="true"
+                                  data-ajax-mode="replace"
+                                  data-ajax-update="#panel"
+                                  data-ajax-success="success">
+
+                                <input asp-for="LeadsId" type="hidden" />
+                                <input asp-for="OccupationId" type="hidden" />
+                                <input asp-for="Designation" type="hidden" />
+
+                                <div class="form-group">
+                                    <label asp-for="ClientName" class=" form-control-label">@Html.DisplayNameFor(x => x.ClientName)</label>
+                                    <input type="text" placeholder="Enter Client Name" class="form-control" asp-for="ClientName">
+                                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="ClientAddress" class=" form-control-label">@Html.DisplayNameFor(x => x.ClientAddress)</label>
+                                    <input type="text" placeholder="Enter Client Name" class="form-control" asp-for="ClientAddress">
+                                    <span asp-validation-for="ClientAddress" class="text-danger"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="ClientPhone" class=" form-control-label">@Html.DisplayNameFor(x => x.ClientPhone)</label>
+                                            <input type="text" placeholder="Enter Phone Number" class="form-control" asp-for="ClientPhone">
+                                            <span asp-validation-for="ClientPhone" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="ClientEmail" class=" form-control-label">@Html.DisplayNameFor(x => x.ClientEmail)</label>
+                                            <input type="text" placeholder="Enter Client Name" class="form-control" asp-for="ClientEmail">
+                                            <span asp-validation-for="ClientEmail" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Prospect" class=" form-control-label">@Html.DisplayNameFor(x => x.Prospect)</label>
+                                            <select class="form-control" asp-for="Prospect">
+                                                <option value="0" selected="selected">----Select-----</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                            <span asp-validation-for="Prospect" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Nursing" class=" form-control-label">@Html.DisplayNameFor(x => x.Nursing)</label>
+                                            <select class="form-control" asp-for="Nursing">
+                                                <option value="0" selected="selected">----Select-----</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                            <span asp-validation-for="Nursing" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="Sold" class=" form-control-label">@Html.DisplayNameFor(x => x.Sold)</label>
+                                            <select class="form-control" asp-for="Sold">
+                                                <option value="0" selected="selected">----Select-----</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                            <span asp-validation-for="Sold" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Submit
+                                    </button>
+                                    <button type="reset" class="btn btn-warning btn-sm" asp-action="Create" asp-controller="Leads">
+                                        <i class="fa fa-undo"></i> Reset
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                @section Scripts{
+
+                    <script src="~/lib/jquery/dist/jquery.js"></script>
+                    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+                    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+                    <script src="~/lib/ajax/dist/jquery.unobtrusive-ajax.js"></script>
+
+                    <script type="text/javascript">
+                        $("#frmCreate").attr("enctype", "multipart/form-data")
+                        function success() {
+                            $("#frmCreate").trigger('reset')
+                        }
+                    </script>
+                }
+
+
+
+                <!--Footer Area Start Here-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            &copy; 2022 - GoldSandsApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </div>
+                    </div>
+                </div>
+                <!--Footer Area Ends Here-->
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+</div>
+
+

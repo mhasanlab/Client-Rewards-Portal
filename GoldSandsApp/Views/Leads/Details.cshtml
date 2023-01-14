@@ -1,0 +1,165 @@
+﻿@model GoldSandsApp.Models.Entities.Leads
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-container">
+
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="header-wrap">
+                    <form class="form-header" action="" method="POST">
+                        <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                        <button class="au-btn--submit" type="submit">
+                            <i class="zmdi zmdi-search"></i>
+                        </button>
+                    </form>
+                    <div class="header-button">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="account-wrap">
+                                <div class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="~/Assets/images/icon/user.png" alt="Wellcome: " />
+                                    </div>
+                                    <div class="content">
+                                        <a class="js-acc-btn" href="#">@User.Identity.Name</a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="~/Assets/images/icon/user.png" alt="Wellcome: " />
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="text">
+                                                    <a href="#">@User.Identity.Name</a>
+                                                </h5>
+                                                <span class="email">@User.Identity.Name</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="account-dropdown__footer">
+                                            <a asp-action="SignOut" asp-controller="Account">
+                                                <i class="zmdi zmdi-power"></i>Logout
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HEADER DESKTOP-->
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                @*<div class="row">
+                        <div class="col-md-12">
+                            <div class="overview-wrap">
+                                <h2 class="title-1">Admin Overview</h2>
+
+                            </div>
+                        </div>
+                    </div>*@
+
+                <!--Main Content Start Here-->
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="clo-md-6">
+                                        <strong class="card-title mb-3">Details Of:</strong>&nbsp; @Model.ClientName
+                                    </div>
+                                    <div class="col-md-6 d-flex justify-content-end">
+                                        <a class="btn btn-danger btn-sm" asp-action="Index" asp-controller="Admin">
+                                            <i class="fa fa-times-circle"></i> Close
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>@Html.DisplayNameFor(model => model.ClientName):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.ClientName)</span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <strong>@Html.DisplayNameFor(model => model.ClientAddress):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.ClientAddress)</span>
+                                    </div>
+                                </div><br />
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>@Html.DisplayNameFor(model => model.ClientPhone):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.ClientPhone)</span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <strong>@Html.DisplayNameFor(model => model.ClientEmail):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.ClientEmail)</span>
+                                    </div>
+                                </div><br />
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <strong>@Html.DisplayNameFor(model => model.Prospect):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.Prospect)</span>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <strong>@Html.DisplayNameFor(model => model.Nursing):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.Nursing)</span>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <strong>@Html.DisplayNameFor(model => model.Sold):</strong>&nbsp;
+                                        <span>@Html.DisplayFor(model => model.Sold)</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer">
+                                <a class="btn btn-primary btn-sm" asp-action="Update" asp-controller="Leads" asp-route-id="@Model.LeadsId">
+                                    <i class="fa fa-arrow-up"></i> Update
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Main Content End Here-->
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            &copy; 2022 - GoldSandsApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+</div>
+

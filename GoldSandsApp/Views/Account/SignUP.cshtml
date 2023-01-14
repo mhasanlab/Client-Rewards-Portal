@@ -1,0 +1,79 @@
+﻿@model GoldSandsApp.Models.ViewModel.SignUpUserViewModel
+@{
+    ViewData["Title"] = "SignUP";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<div class="page-wrapper">
+    <div class="page-content--bge5">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="#">
+                            <img src="~/Assets/images/icon/goldsands-logo-3.png" alt="GoldSands">
+                        </a>
+                    </div>
+                    <div class="login-form">
+                        <form method="post" asp-action="SignUp">
+
+                            <div class="form-group">
+                                <label asp-for="FullName"></label>
+                                <input class="au-input au-input--full" type="text" asp-for="FullName" placeholder="Set Your Username">
+                                <span class="text-danger" asp-validation-for="FullName"></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="Phone"></label>
+                                        <input class="au-input au-input--full" type="text" asp-for="Phone" placeholder="Enter Your Phone Number">
+                                        <span class="text-danger" asp-validation-for="Phone"></span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="Email"></label>
+                                        <input class="au-input au-input--full" type="text" asp-for="Email" placeholder="Enter Your Email Address">
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="Password"></label>
+                                        <input class="au-input au-input--full" type="password" asp-for="Password" placeholder="Set Your Password">
+                                        <span class="text-danger" asp-validation-for="Password"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label asp-for="ConfirmPassword"></label>
+                                        <input class="au-input au-input--full" type="password" asp-for="ConfirmPassword" placeholder="Confirm Your Password">
+                                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">SignUp</button>
+
+                        </form>
+                        <div class="register-link">
+                            <p>
+                                Already have an account?
+                                <a asp-action="Login" asp-controller="Account">Sign In</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

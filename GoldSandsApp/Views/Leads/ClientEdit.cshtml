@@ -1,0 +1,117 @@
+﻿@model GoldSandsApp.Models.ViewModel.LeadsVM
+@{
+    ViewData["Title"] = "ClientEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <div id="panel"></div>
+        <h2>Edit Customer</h2>
+        <form id="frmCreate"
+              asp-action="ClientEdit"
+              asp-controller="Leads"
+              data-ajax-method="Post"
+              data-ajax="true"
+              data-ajax-mode="replace"
+              data-ajax-update="#panel"
+              data-ajax-success="success">
+            <input asp-for="LeadsId" type="hidden" />
+            <input asp-for="Prospect" type="hidden" />
+            <input asp-for="Nursing" type="hidden" />
+            <input asp-for="Sold" type="hidden" />
+
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="ClientName">@Html.DisplayNameFor(x => x.ClientName)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" asp-for="ClientName" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="ClientAddress">@Html.DisplayNameFor(x => x.ClientAddress)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" asp-for="ClientAddress" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="ClientAddress" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="ClientPhone">@Html.DisplayNameFor(x => x.ClientPhone)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" asp-for="ClientPhone" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="ClientPhone" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="ClientEmail">@Html.DisplayNameFor(x => x.ClientEmail)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" asp-for="ClientEmail" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="ClientEmail" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="OccupationId">@Html.DisplayNameFor(x => x.OccupationId)</label>
+                <div class="col-md-6">
+                    <select class="form-control" asp-for="OccupationId" asp-items="@(new SelectList(ViewBag.Occupations,"OccupationId","OccupationName"))">
+                        <option value="0" selected="selected">----Select-----</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="OccupationId" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="Designation">@Html.DisplayNameFor(x => x.Designation)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" asp-for="Designation" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="Designation" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mb-2">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn btn-primary">Update Now</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span> <a asp-action="Index" asp-controller="ClientPanel" class="btn btn-danger">Back to Client Panel</a></span>
+                </div>
+
+                <div class="col-10 offset-2 mt-4">
+                   
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/validation/jquery.validate.min.js"></script>
+    <script src="~/lib/validation/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/ajax/dist/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript">
+        $("#frmCreate").attr("enctype", "multipart/form-data")
+        function success() {
+            $("#frmCreate").trigger()
+        }
+    </script>
+}
+

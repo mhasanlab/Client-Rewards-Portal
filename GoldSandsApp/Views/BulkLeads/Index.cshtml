@@ -1,0 +1,42 @@
+﻿@model IEnumerable<GoldSandsApp.Models.Entities.BulkLeads>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Leads List</h2>
+
+        <table class="table table-bordered table-sm table-striped mt-2">
+            <thead class="table-warning">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.UserName)</th>
+                    <th>@Html.DisplayNameFor(x => x.UploadDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.FileUpload)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.UserName)</td>
+                        <td>@Html.DisplayFor(x => item.UploadDate)</td>
+                        <td>
+                            <a href="~/Uploads/@item.FileUpload">@item.FileUpload</a>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+        </div>
+
+    </div>
+
+</div>

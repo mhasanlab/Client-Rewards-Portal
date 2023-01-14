@@ -1,0 +1,81 @@
+﻿@model GoldSandsApp.Models.ViewModel.BulkLeadsVM
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Uploded Leads List</h2> <br />
+        <hr />
+        <div class="d-flex justify-content-md-start mb-3 col-2 text-center text-uppercase text-white btn btn-info">
+            <a href="~/Uploads/843aee14-9b09-4c0a-978c-f263ea10a557_Customer.xlsx">Download Templates</a>
+        </div>
+        <div id="panel"></div>
+        <form id="frmCreate"
+              asp-action="Create"
+              asp-controller="BulkLeads"
+              data-ajax-method="Post"
+              data-ajax="true"
+              data-ajax-mode="replace"
+              data-ajax-update="#panel"
+              data-ajax-success="success">
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="UserName">@Html.DisplayNameFor(x => x.UserName)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" asp-for="UserName" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="UploadDate">@Html.DisplayNameFor(x => x.UploadDate)</label>
+                <div class="col-md-6">
+                    <input class="form-control" type="date" asp-for="UploadDate" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="UploadDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <label class="col-form-label col-2" asp-for="ExcleFile">@Html.DisplayNameFor(x => x.ExcleFile)</label>
+                <div class="col-md-6">
+                    <input type="file" class="form-control" asp-for="ExcleFile" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="ExcleFile" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row mt-3">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn btn-primary">Upload Now</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts{
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/ajax/dist/jquery.unobtrusive-ajax.js"></script>
+
+    <script type="text/javascript">
+        $("#frmCreate").attr("enctype", "multipart/form-data")
+        function success() {
+            $("#frmCreate").trigger('reset')
+        }
+    </script>
+}
+
+
